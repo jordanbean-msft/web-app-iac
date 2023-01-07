@@ -3,6 +3,7 @@ variables:
   - template: ../env/global.yml
   - template: ../env/dev.yml
   - template: variables.yml
+  - group: ${{ variables.devEnvironmentName }}
 trigger:
   - main
 stages:

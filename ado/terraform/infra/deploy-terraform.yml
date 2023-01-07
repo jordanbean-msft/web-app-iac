@@ -39,7 +39,7 @@ steps:
       command: plan
       environmentServiceName: ${{ parameters.serviceConnectionName }}
       publishPlanResults: 'my_plan_name'
-      commandOptions: '-out=terraform.tfplan -detailed-exitcode -var-file=${{ parameters.pathToTerraformEnvironmentVariablesDirectory }}/${{ parameters.environmentName }}.tfvars -var="vm_queue_username_secret_value=$(vm_queue_username_secret_value)" -var="vm_queue_password_secret_value=$(vm_queue_password_secret_value)" -var="sql_username_secret_value=$(sql_username_secret_value)" -var="sql_password_secret_value=$(sql_password_secret_value)"' 
+      commandOptions: '-out=terraform.tfplan -detailed-exitcode -var-file=${{ parameters.pathToTerraformEnvironmentVariablesDirectory }}/${{ parameters.environmentName }}.tfvars -var="sql_username_secret_value=$(sql_username_secret_value)" -var="sql_password_secret_value=$(sql_password_secret_value)"' 
       workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
   - task: TerraformCLI@0
     displayName: 'terraform apply'
