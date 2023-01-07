@@ -1,0 +1,5 @@
+resource_group_name  = "rg-webAppIaC-ussc-terraform"
+region               = "ussc"
+environment          = "terraform"
+location             = "South Central US"
+app_service_plan_sku = "S1"

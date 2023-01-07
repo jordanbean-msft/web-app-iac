@@ -40,6 +40,8 @@ module keyVaultDeployment 'key-vault.bicep' = {
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
     location: location
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
   }
 }
 

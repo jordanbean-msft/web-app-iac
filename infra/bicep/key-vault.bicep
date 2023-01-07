@@ -2,6 +2,10 @@ param keyVaultName string
 param location string
 param logAnalyticsWorkspaceName string
 param managedIdentityName string
+@secure()
+param administratorLogin string
+@secure()
+param administratorLoginPassword string
 
 resource managedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' existing = {
   name: managedIdentityName
@@ -30,6 +34,20 @@ resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
         }
       }
     ]
+  }
+}
+
+resource administratorLoginSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
+  name: '${keyVaultName}/administratorLogin'
+  properties: {
+    value: administratorLogin
+  }
+}
+
+resource administratorLoginPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
+  name: '${keyVaultName}/administratorLoginPassword'
+  properties: {
+    value: administratorLoginPassword
   }
 }
 

@@ -1,0 +1,51 @@
+parameters:
+  - name: environmentName
+  - name: pathToInfrastructureDirectory
+  - name: pathToTerraformEnvironmentVariablesDirectory
+  - name: devBackendAzureRmResourceGroupName
+  - name: devBackendAzureRmStorageAccountName
+  - name: serviceConnectionName
+  - name: devBackendAzureRmContainerName
+  - name: devBackendAzureRmKey
+  
+steps:
+  - checkout: self
+    persistCredentials: true
+  - template: ../printEnv.yml
+  - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+    displayName: Install Terraform
+    inputs:
+      terraformVersion: latest
+  - task: TerraformCLI@0
+    displayName: 'terraform init'
+    inputs:
+      command: init
+      backendType: azurerm
+      backendServiceArm: ${{ parameters.serviceConnectionName }} 
+      devBackendAzureRmResourceGroupName: ${{ parameters.devBackendAzureRmResourceGroupName }}
+      devBackendAzureRmStorageAccountName: ${{ parameters.devBackendAzureRmStorageAccountName}}
+      devBackendAzureRmContainerName: ${{ parameters.devBackendAzureRmContainerName }}
+      devBackendAzureRmKey: ${{ parameters.devBackendAzureRmKey }}
+      workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
+  - task: TerraformCLI@0
+    displayName: 'terraform validate'
+    inputs:
+      command: validate
+      environmentServiceName: ${{ parameters.serviceConnectionName }}
+      workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
+  - task: TerraformCLI@0
+    displayName: 'terraform plan'
+    inputs:
+      command: plan
+      environmentServiceName: ${{ parameters.serviceConnectionName }}
+      publishPlanResults: 'my_plan_name'
+      commandOptions: '-out=terraform.tfplan -detailed-exitcode -var-file=${{ parameters.pathToTerraformEnvironmentVariablesDirectory }}/${{ parameters.environmentName }}.tfvars -var="vm_queue_username_secret_value=$(vm_queue_username_secret_value)" -var="vm_queue_password_secret_value=$(vm_queue_password_secret_value)" -var="sql_username_secret_value=$(sql_username_secret_value)" -var="sql_password_secret_value=$(sql_password_secret_value)"' 
+      workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
+  - task: TerraformCLI@0
+    displayName: 'terraform apply'
+    condition: and(succeeded(), eq(variables['TERRAFORM_PLAN_HAS_CHANGES'], 'true'))
+    inputs:
+      command: apply
+      environmentServiceName: ${{ parameters.serviceConnectionName }}
+      commandOptions: 'terraform.tfplan' 
+      workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
