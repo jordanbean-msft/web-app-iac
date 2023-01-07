@@ -21,7 +21,7 @@ This repo demostrates how to build & deploy a .NET Core Web App using both Azure
 ```
 cd ./infra/bicep
 
-az deployment group create --resource-group rg-webAppIaC-ussc-bicep --template-file ./main.bicep --parameters ./dev.parameters.json --parameters administratorLogin= administratorLoginPassword=
+az deployment group create --resource-group rg-webAppIaC-ussc-bicep --template-file ./main.bicep --parameters ./env/dev.parameters.json --parameters administratorLogin= administratorLoginPassword=
 
 cd ../../src/demoWebApp
 

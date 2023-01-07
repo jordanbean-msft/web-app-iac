@@ -5,10 +5,6 @@ variables:
   # - template: ../env/tst.yml
   # - template: ../env/prd.yml
   - template: variables.yml
-    parameters:
-      adoScriptDirectoryName: ${{ variables.adoScriptDirectoryName }}
-      infrastructureDirectoryName: ${{ variables.infrastructureDirectoryName }}
-      bicepEnvironmentVariablesDirectoryName: ${{ variables.bicepEnvironmentVariablesDirectoryName }}
 trigger:
   branches:
     include: 
