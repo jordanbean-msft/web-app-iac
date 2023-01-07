@@ -11,7 +11,7 @@ parameters:
 steps:
   - checkout: self
     persistCredentials: true
-  - template: ../printEnv.yml
+  - template: ../../printEnv.yml
   - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
     displayName: Install Terraform
     inputs:

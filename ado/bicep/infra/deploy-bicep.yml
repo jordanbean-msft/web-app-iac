@@ -10,7 +10,7 @@ parameters:
 steps:
   - checkout: self
     persistCredentials: 'true'
-  - template: ../printEnv.yml
+  - template: ../../printEnv.yml
   - task: AzureCLI@2
     inputs:
       azureSubscription: ${{ parameters.serviceConnectionName }}

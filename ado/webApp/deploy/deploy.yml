@@ -5,6 +5,7 @@ parameters:
   - name: webAppBuildPipelineLabel
 
 steps:
+  - template: ../../printEnv.yml
   - task: AzureWebApp@1
     displayName: Deploy WebApp
     inputs:

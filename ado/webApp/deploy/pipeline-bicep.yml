@@ -1,9 +1,9 @@
 name: deploy-webapp
 variables:
-  - template: ../../env/global.yml
-  - template: ../../env/dev.yml
-  # - template: ../../env/tst.yml
-  # - template: ../../env/prd.yml
+  - template: ../../bicep/env/global.yml
+  - template: ../../bicep/env/dev.yml
+  # - template: ../../bicep/env/tst.yml
+  # - template: ../../bicep/env/prd.yml
 trigger: none 
 resources:
   pipelines:
