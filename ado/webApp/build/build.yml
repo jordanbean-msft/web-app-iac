@@ -14,13 +14,7 @@ steps:
     inputs:
       command: publish
       publishWebProjects: true
-      arguments: '--configuration ${{ parameters.configuration }} --output $(System.DefaultWorkingDirectory)/WebAppContent'
+      arguments: '--configuration ${{ parameters.configuration }} --output $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}.zip'
       zipAfterPublish: true
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/WebAppContent'
-      includeRootFolder: false
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
-      replaceExistingArchive: true
   - publish: $(Build.ArtifactStagingDirectory)
     artifact: ${{ parameters.artifactName }}
