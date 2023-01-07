@@ -14,7 +14,7 @@ steps:
     inputs:
       command: publish
       publishWebProjects: true
-      arguments: '--configuration ${{ parameters.configuration }} --output $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}.zip'
+      arguments: '--configuration ${{ parameters.configuration }} --output $(Build.ArtifactStagingDirectory)'
       zipAfterPublish: true
   - publish: $(Build.ArtifactStagingDirectory)
     artifact: ${{ parameters.artifactName }}
