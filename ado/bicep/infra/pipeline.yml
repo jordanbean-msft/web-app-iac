@@ -23,7 +23,7 @@ stages:
     jobs:
     - deployment: Dev_Deploy
       pool:
-        vmImage: 'windows-latest'
+        vmImage: 'ubuntu-latest'
       environment: ${{ variables.devEnvironmentName }}
       strategy:
         runOnce:
@@ -36,6 +36,8 @@ stages:
                 pathToBicepEnvironmentVariablesDirectory: ${{ variables.pathToBicepEnvironmentVariablesDirectory }}
                 serviceConnectionName: ${{ variables.devServiceConnectionName }}
                 resourceGroupName: ${{ variables.devResourceGroupName }}
+                administratorLogin: $(administratorLogin)
+                administratorLoginPassword: $(administratorLoginPassword)
   # - stage: Tst
   #   dependsOn: Dev 
   #   jobs:

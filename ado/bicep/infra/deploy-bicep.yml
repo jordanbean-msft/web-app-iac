@@ -4,6 +4,8 @@ parameters:
   - name: pathToBicepEnvironmentVariablesDirectory
   - name: serviceConnectionName
   - name: resourceGroupName
+  - name: administratorLogin
+  - name: administratorLoginPassword
   
 steps:
   - checkout: self
@@ -12,7 +14,7 @@ steps:
   - task: AzureCLI@2
     inputs:
       azureSubscription: ${{ parameters.serviceConnectionName }}
-      scriptType: 'ps'
+      scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az deployment group create -g ${{ parameters.resourceGroupName }} --template-file ${{ parameters.pathToInfrastructureDirectory }}/main.bicep --parameters ${{ parameters.pathToBicepEnvironmentVariablesDirectory }}/${{ parameters.environmentName }}.parameters.json
+        az deployment group create -g ${{ parameters.resourceGroupName }} --template-file ${{ parameters.pathToInfrastructureDirectory }}/main.bicep --parameters ${{ parameters.pathToBicepEnvironmentVariablesDirectory }}/${{ parameters.environmentName }}.parameters.json --parameters administratorLogin=${{ parameters.administratorLogin }} administratorLoginPassword=${{ parameters.administratorLoginPassword }}

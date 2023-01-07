@@ -12,13 +12,13 @@ trigger:
     include:
       - ../../env/global.yml
       - ./*
-      - ../../../src/net-framework/*
+      - ../../../src/demoWebApp/*
 stages:
   - stage: Build
     jobs:
       - job: Build
         pool:
-          vmImage: 'windows-2022'
+          vmImage: 'ubuntu-latest'
         steps:
           - template: build.yml
             parameters:
