@@ -3,10 +3,6 @@ variables:
   - template: ../env/global.yml
   - template: ../env/dev.yml
   - template: variables.yml
-    parameters:
-      adoScriptDirectoryName: ${{ variables.adoScriptDirectoryName }}
-      infrastructureDirectoryName: ${{ variables.infrastructureDirectoryName }}
-      terraformEnvironmentVariablesDirectoryName: ${{ variables.terraformEnvironmentVariablesDirectoryName }}
 trigger:
   - main
 stages:
@@ -14,7 +10,7 @@ stages:
     jobs:
     - deployment: Dev_Deploy
       pool:
-        vmImage: 'windows-latest'
+        vmImage: 'ubuntu-latest'
       environment: ${{ variables.devEnvironmentName }}
       variables:
         - name: ARM_SUBSCRIPTION_ID

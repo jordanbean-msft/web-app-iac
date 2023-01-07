@@ -2,8 +2,8 @@ name: deploy-webapp
 variables:
   - template: ../../env/global.yml
   - template: ../../env/dev.yml
-  - template: ../../env/tst.yml
-  - template: ../../env/prd.yml
+  # - template: ../../env/tst.yml
+  # - template: ../../env/prd.yml
 trigger: none 
 resources:
   pipelines:
@@ -14,7 +14,7 @@ stages:
     jobs:
     - deployment: Dev_Deploy
       pool:
-        vmImage: 'windows-latest'
+        vmImage: 'ubuntu-latest'
       environment: ${{ variables.devEnvironmentName }}
       strategy:
         runOnce:
@@ -31,7 +31,7 @@ stages:
   #   jobs:
   #   - deployment: Tst_Deploy
   #     pool:
-  #       vmImage: 'windows-latest'
+  #       vmImage: 'ubuntu-latest'
   #     environment: ${{ variables.tstEnvironmentName }}
   #     strategy:
   #       runOnce:
@@ -48,7 +48,7 @@ stages:
   #   jobs:
   #   - deployment: Prd_Deploy
   #     pool:
-  #       vmImage: 'windows-latest'
+  #       vmImage: 'ubuntu-latest'
   #     environment: ${{ variables.prdEnvironmentName }}
   #     strategy:
   #       runOnce:

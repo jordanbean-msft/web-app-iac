@@ -9,11 +9,17 @@ steps:
   - task: NuGetCommand@2
     inputs:
       restoreSolution: ${{ parameters.pathToSolutionFile }}
-  - task: VSBuild@1
+  - task: DotNetCoreCLI@2
     inputs:
-      solution: ${{ parameters.pathToSolutionFile }}
-      msbuildArgs: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl="$(System.DefaultWorkingDirectory)\\WebAppContent"'
-      configuration: ${{ parameters.configuration}}
+      command: build
+      projects: ${{ parameters.pathToSolutionFile }}
+      arguments: '--configuration ${{ parameters.configuration }}'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: publish
+      publishWebProjects: true
+      arguments: '--configuration ${{ parameters.configuration }} --output $(System.DefaultWorkingDirectory)/WebAppContent'
+      zipAfterPublish: true
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/WebAppContent'
