@@ -1,9 +1,9 @@
 name: deploy-webapp
 variables:
   - template: ../../global.yml
-  - template: ../../${{ variables.iacType }}/env/dev.yml
-  # - template: ../../${{ variables.iacType }}/env/tst.yml
-  # - template: ../../${{ variables.iacType }}/env/prd.yml
+  - template: ../../terraform/env/dev.yml
+  # - template: ../../terraform/env/tst.yml
+  # - template: ../../terraform/env/prd.yml
 trigger: none 
 resources:
   pipelines:
