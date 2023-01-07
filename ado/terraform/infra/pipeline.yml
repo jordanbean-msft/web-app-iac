@@ -5,7 +5,14 @@ variables:
   - template: variables.yml
   - group: ${{ variables.devEnvironmentName }}
 trigger:
-  - main
+  branches:
+    include: 
+      - main
+  paths:
+    include:
+      - ../env/*
+      - ../../infra/*
+      - ./*
 stages:
   - stage: Dev
     jobs:
