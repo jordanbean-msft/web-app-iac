@@ -1,6 +1,6 @@
 name: deploy-infrastructure
 variables:
-  - template: ../env/global.yml
+  - template: ../../global.yml
   - template: ../env/dev.yml
   - template: variables.yml
   - group: ${{ variables.devEnvironmentName }}

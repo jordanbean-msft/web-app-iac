@@ -1,6 +1,6 @@
 name: deploy-webapp
 variables:
-  - template: ../../bicep/env/global.yml
+  - template: ../../global.yml
   - template: ../../bicep/env/dev.yml
   # - template: ../../bicep/env/tst.yml
   # - template: ../../bicep/env/prd.yml

@@ -1,6 +1,6 @@
 name: deploy-webapp
 variables:
-  - template: ../../terraform/env/global.yml
+  - template: ../../global.yml
   - template: ../../terraform/env/dev.yml
   # - template: ../../terraform/env/tst.yml
   # - template: ../../terraform/env/prd.yml

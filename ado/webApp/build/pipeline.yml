@@ -1,6 +1,6 @@
 name: build-webapp
 variables:
-  - template: ../../env/global.yml
+  - template: ../../global.yml
   - template: variables.yml
     parameters:
       webAppSolutionName: ${{ variables.webAppSolutionName }}
