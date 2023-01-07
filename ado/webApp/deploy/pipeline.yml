@@ -1,7 +1,7 @@
 name: deploy-webapp
 variables:
   - template: ../../global.yml
-  - template: ../../${{ variables.iacType }}/env/dev.yml
+  - template: ../../$(iacType)/env/dev.yml
   # - template: ../../${{ variables.iacType }}/env/tst.yml
   # - template: ../../${{ variables.iacType }}/env/prd.yml
 trigger: none 
