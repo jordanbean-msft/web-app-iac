@@ -5,10 +5,6 @@ parameters:
 
 steps:
   - template: ../../printEnv.yml
-  - task: NuGetToolInstaller@0
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: ${{ parameters.pathToSolutionFile }}
   - task: DotNetCoreCLI@2
     inputs:
       command: build
