@@ -2,8 +2,8 @@ name: deploy-infrastructure
 variables:
   - template: ../env/global.yml
   - template: ../env/dev.yml
-  - template: ../env/tst.yml
-  - template: ../env/prd.yml
+  # - template: ../env/tst.yml
+  # - template: ../env/prd.yml
   - template: variables.yml
     parameters:
       adoScriptDirectoryName: ${{ variables.adoScriptDirectoryName }}
