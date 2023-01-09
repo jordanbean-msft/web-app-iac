@@ -39,3 +39,4 @@ stages:
                 devBackendAzureRmStorageAccountName: ${{ variables.devBackendAzureRmStorageAccountName }}
                 devBackendAzureRmContainerName: ${{ variables.devBackendAzureRmContainerName }}
                 devBackendAzureRmKey: ${{ variables.devBackendAzureRmKey }}
+                subscriptionId: ${{ variables.subscriptionId }}

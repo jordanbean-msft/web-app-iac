@@ -7,6 +7,7 @@ parameters:
   - name: serviceConnectionName
   - name: devBackendAzureRmContainerName
   - name: devBackendAzureRmKey
+  - name: subscriptionId
   
 steps:
   - checkout: self
@@ -21,7 +22,8 @@ steps:
     inputs:
       command: init
       backendType: azurerm
-      backendServiceArm: ${{ parameters.serviceConnectionName }} 
+      backendServiceArm: ${{ parameters.serviceConnectionName }}
+      backendAzureRmSubscriptionId: ${{ parameters.subscriptionId }}
       backendAzureRmResourceGroupName: ${{ parameters.devBackendAzureRmResourceGroupName }}
       backendAzureRmStorageAccountName: ${{ parameters.devBackendAzureRmStorageAccountName}}
       backendAzureRmContainerName: ${{ parameters.devBackendAzureRmContainerName }}
