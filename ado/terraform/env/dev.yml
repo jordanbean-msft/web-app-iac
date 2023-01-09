@@ -1,5 +1,9 @@
 variables:
   devEnvironmentName: dev
-  devResourceGroupName: rg-webAppIaC-ussc-bicep
-  devServiceConnectionName: rg-webAppIaC-ussc-bicep
-  devAppServiceName: wa-webAppIaC-ussc-bicep
+  devResourceGroupName: rg-webAppIaC-ussc-terraform
+  devServiceConnectionName: rg-webAppIaC-ussc-terraform
+  devAppServiceName: wa-webAppIaC-ussc-terraform
+  devBackendAzureRmResourceGroupName: rg-terraform
+  devBackendAzureRmStorageAccountName: saterraformrjb
+  devBackendAzureRmContainerName: rg-webappiac-ussc-terraform-tfstate
+  devBackendAzureRmKey: dev.terraform.tfstate
