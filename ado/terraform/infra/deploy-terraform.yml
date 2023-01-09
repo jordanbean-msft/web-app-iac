@@ -17,6 +17,14 @@ steps:
     displayName: Install Terraform
     inputs:
       terraformVersion: latest
+  - task: ShellScript@2
+    displayName: 'Create override file for Terraform backend to point to Azure instead of local'
+    inputs:
+      disableAutoCwd: true
+      cwd: ${{ parameters.pathToInfrastructureDirectory }}
+      scriptType: inlineScript
+      inlineScript: |
+        echo "terraform { backend \"azurerm\" { } }" > override.tf
   - task: TerraformCLI@0
     displayName: 'terraform init'
     inputs:

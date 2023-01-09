@@ -1,5 +1,8 @@
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json": "file:///c%3A/Users/jordanbean/source/repos/web-app-iac/ado/bicep/infra/deploy-bicep.yml"
+    "https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json": [
+      "file:///c%3A/Users/jordanbean/source/repos/web-app-iac/ado/bicep/infra/deploy-bicep.yml",
+      "file:///c%3A/Users/jordanbean/source/repos/web-app-iac/ado/terraform/infra/deploy-terraform.yml"
+    ]
   }
 }
