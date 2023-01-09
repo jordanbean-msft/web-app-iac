@@ -5,6 +5,9 @@ terraform {
       version = ">=3.38.0"
     }
   }
+  backend "local" {
+
+  }
   # backend "azurerm" {
   #   resource_group_name  = "rg-webAppIac-ussc-terraform"
   #   storage_account_name = "sawebappiactfstate"
