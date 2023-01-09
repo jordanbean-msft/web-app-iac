@@ -22,10 +22,10 @@ steps:
       command: init
       backendType: azurerm
       backendServiceArm: ${{ parameters.serviceConnectionName }} 
-      devBackendAzureRmResourceGroupName: ${{ parameters.devBackendAzureRmResourceGroupName }}
-      devBackendAzureRmStorageAccountName: ${{ parameters.devBackendAzureRmStorageAccountName}}
-      devBackendAzureRmContainerName: ${{ parameters.devBackendAzureRmContainerName }}
-      devBackendAzureRmKey: ${{ parameters.devBackendAzureRmKey }}
+      backendAzureRmResourceGroupName: ${{ parameters.devBackendAzureRmResourceGroupName }}
+      backendAzureRmStorageAccountName: ${{ parameters.devBackendAzureRmStorageAccountName}}
+      backendAzureRmContainerName: ${{ parameters.devBackendAzureRmContainerName }}
+      backendAzureRmKey: ${{ parameters.devBackendAzureRmKey }}
       workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
   - task: TerraformCLI@0
     displayName: 'terraform validate'
