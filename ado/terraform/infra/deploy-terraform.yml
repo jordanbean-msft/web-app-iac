@@ -22,7 +22,7 @@ steps:
     inputs:
       workingDirectory: ${{ parameters.pathToInfrastructureDirectory }}
       script: |
-        echo "terraform { backend \"azurerm\" { } }" > override.tf
+        printf "terraform { \n  backend \"azurerm\" { \n  } \n}" > override.tf
   - task: TerraformCLI@0
     displayName: 'terraform init'
     inputs:
